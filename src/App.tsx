@@ -10,20 +10,15 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <div>
-        <div
-          className="min-h-screen bg-cover bg-center bg-fixed bg-no-repeat"
-          style={{
-            backgroundImage: `url(${backgroundSvg})`,
-          }}
-        >
-          <Header />
-          <div className="p-4 flex flex-col gap-4">
-            <div className="flex justify-between">
-              <NewPet />
-            </div>
-            <PetCards />
-          </div>
+      <div
+        className="min-h-screen bg-cover bg-center bg-fixed bg-no-repeat bg-yellow-500/20"
+        style={{
+          backgroundImage: `url(${backgroundSvg})`,
+        }}
+      >
+        <Header />
+        <div className="p-4 flex flex-col gap-4">
+          <PetCards />
         </div>
       </div>
     </QueryClientProvider>

@@ -2,12 +2,13 @@ import { useState } from "react";
 import { Toggle } from "../Toggle";
 import { ViewPetModal } from "../ViewPetModal";
 import { PetCard } from "./PetCard";
-import { usePetStatus } from "../../hooks/useGetPetStatus";
-
-type TabValue = "available" | "pending" | "sold";
+import { usePetStatus, type PetStatus } from "../../hooks/useGetPetStatus";
+import { NewPet } from "../NewPet/NewPet";
 
 export const PetCards = () => {
-  const [selectedStatus, setSelectedStatus] = useState<TabValue>("available");
+  const [selectedStatus, setSelectedStatus] = useState<PetStatus[]>([
+    "available",
+  ]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPetId, setSelectedPetId] = useState<number | null>(null);
 
@@ -28,16 +29,23 @@ export const PetCards = () => {
     setSelectedPetId(null);
   };
 
-  const handleTabChange = (tab: TabValue) => {
-    setSelectedStatus(tab);
+  const handleTabChange = (tab: PetStatus) => {
+    if (selectedStatus.includes(tab)) {
+      setSelectedStatus(selectedStatus.filter((status) => status !== tab));
+    } else {
+      setSelectedStatus([...selectedStatus, tab]);
+    }
   };
 
   const selectedPet = pets?.find((pet) => pet.id === selectedPetId);
 
   return (
     <div className="p-4">
-      <div className="mb-6">
-        <Toggle onTabChange={handleTabChange} defaultTab="available" />
+      <div className="mb-6 flex justify-between">
+        <Toggle onTabChange={handleTabChange} selectedTabs={selectedStatus} />
+        <div className="flex justify-between">
+          <NewPet />
+        </div>
       </div>
       {isLoading && (
         <div className="text-center text-gray-500 py-8">Loading pets...</div>
