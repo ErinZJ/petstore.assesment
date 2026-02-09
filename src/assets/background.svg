@@ -1,0 +1,235 @@
+<svg width="1300" height="1056" viewBox="0 100 1200 1056" xmlns="http://www.w3.org/2000/svg">
+  <!-- Semi-transparent pet-themed watermark -->
+
+  <!-- Large paw print in center -->
+  <g opacity="0.08" fill="#4A5568">
+    <!-- Main pad -->
+    <ellipse cx="600" cy="825" rx="60" ry="75" />
+
+    <!-- Toe pads -->
+    <ellipse cx="545" cy="725" rx="35" ry="42" transform="rotate(-15 545 725)" />
+    <ellipse cx="600" cy="695" rx="40" ry="45" />
+    <ellipse cx="655" cy="725" rx="35" ry="42" transform="rotate(15 655 725)" />
+    <ellipse cx="695" cy="770" rx="32" ry="40" transform="rotate(25 695 770)" />
+  </g>
+
+  <!-- Small decorative paw prints -->
+  <g opacity="0.08" fill="#4A5568">
+    <!-- Top row of paws -->
+    <ellipse cx="100" cy="80" rx="20" ry="25" />
+    <ellipse cx="85" cy="55" rx="11" ry="13" transform="rotate(-15 85 55)" />
+    <ellipse cx="100" cy="48" rx="13" ry="15" />
+    <ellipse cx="115" cy="55" rx="11" ry="13" transform="rotate(15 115 55)" />
+
+    <ellipse cx="300" cy="60" rx="22" ry="27" />
+    <ellipse cx="283" cy="33" rx="12" ry="14" transform="rotate(-15 283 33)" />
+    <ellipse cx="300" cy="25" rx="14" ry="16" />
+    <ellipse cx="317" cy="33" rx="12" ry="14" transform="rotate(15 317 33)" />
+
+    <ellipse cx="500" cy="50" rx="21" ry="26" />
+    <ellipse cx="484" cy="24" rx="11" ry="13" transform="rotate(-15 484 24)" />
+    <ellipse cx="500" cy="17" rx="13" ry="15" />
+    <ellipse cx="516" cy="24" rx="11" ry="13" transform="rotate(15 516 24)" />
+
+    <ellipse cx="700" cy="70" rx="22" ry="27" />
+    <ellipse cx="683" cy="43" rx="12" ry="14" transform="rotate(-15 683 43)" />
+    <ellipse cx="700" cy="35" rx="14" ry="16" />
+    <ellipse cx="717" cy="43" rx="12" ry="14" transform="rotate(15 717 43)" />
+
+    <ellipse cx="900" cy="45" rx="20" ry="25" />
+    <ellipse cx="885" cy="20" rx="11" ry="13" transform="rotate(-15 885 20)" />
+    <ellipse cx="900" cy="13" rx="13" ry="15" />
+    <ellipse cx="915" cy="20" rx="11" ry="13" transform="rotate(15 915 20)" />
+
+    <ellipse cx="1100" cy="65" rx="21" ry="26" />
+    <ellipse cx="1084" cy="39" rx="11" ry="13" transform="rotate(-15 1084 39)" />
+    <ellipse cx="1100" cy="32" rx="13" ry="15" />
+    <ellipse cx="1116" cy="39" rx="11" ry="13" transform="rotate(15 1116 39)" />
+
+    <!-- Second row of paws -->
+    <ellipse cx="200" cy="160" rx="23" ry="28" />
+    <ellipse cx="183" cy="133" rx="13" ry="15" transform="rotate(-15 183 133)" />
+    <ellipse cx="200" cy="125" rx="15" ry="17" />
+    <ellipse cx="217" cy="133" rx="13" ry="15" transform="rotate(15 217 133)" />
+
+    <ellipse cx="400" cy="140" rx="22" ry="27" />
+    <ellipse cx="384" cy="114" rx="12" ry="14" transform="rotate(-15 384 114)" />
+    <ellipse cx="400" cy="107" rx="14" ry="16" />
+    <ellipse cx="416" cy="114" rx="12" ry="14" transform="rotate(15 416 114)" />
+
+    <ellipse cx="600" cy="100" rx="20" ry="25" />
+    <ellipse cx="583" cy="73" rx="11" ry="13" transform="rotate(-15 583 73)" />
+    <ellipse cx="600" cy="66" rx="13" ry="15" />
+    <ellipse cx="617" cy="73" rx="11" ry="13" transform="rotate(15 617 73)" />
+
+    <ellipse cx="800" cy="130" rx="23" ry="28" />
+    <ellipse cx="783" cy="103" rx="13" ry="15" transform="rotate(-15 783 103)" />
+    <ellipse cx="800" cy="95" rx="15" ry="17" />
+    <ellipse cx="817" cy="103" rx="13" ry="15" transform="rotate(15 817 103)" />
+
+    <ellipse cx="1000" cy="110" rx="21" ry="26" />
+    <ellipse cx="984" cy="84" rx="11" ry="13" transform="rotate(-15 984 84)" />
+    <ellipse cx="1000" cy="77" rx="13" ry="15" />
+    <ellipse cx="1016" cy="84" rx="11" ry="13" transform="rotate(15 1016 84)" />
+
+    <!-- Third row -->
+    <ellipse cx="150" cy="240" rx="24" ry="29" />
+    <ellipse cx="132" cy="212" rx="13" ry="15" transform="rotate(-15 132 212)" />
+    <ellipse cx="150" cy="204" rx="15" ry="17" />
+    <ellipse cx="168" cy="212" rx="13" ry="15" transform="rotate(15 168 212)" />
+
+    <ellipse cx="350" cy="220" rx="23" ry="28" />
+    <ellipse cx="333" cy="193" rx="13" ry="15" transform="rotate(-15 333 193)" />
+    <ellipse cx="350" cy="185" rx="15" ry="17" />
+    <ellipse cx="367" cy="193" rx="13" ry="15" transform="rotate(15 367 193)" />
+
+    <ellipse cx="550" cy="200" rx="22" ry="27" />
+    <ellipse cx="534" cy="174" rx="12" ry="14" transform="rotate(-15 534 174)" />
+    <ellipse cx="550" cy="167" rx="14" ry="16" />
+    <ellipse cx="566" cy="174" rx="12" ry="14" transform="rotate(15 566 174)" />
+
+    <ellipse cx="750" cy="180" rx="22" ry="28" />
+    <ellipse cx="732" cy="150" rx="12" ry="14" transform="rotate(-15 732 150)" />
+    <ellipse cx="750" cy="142" rx="14" ry="16" />
+    <ellipse cx="768" cy="150" rx="12" ry="14" transform="rotate(15 768 150)" />
+
+    <ellipse cx="950" cy="210" rx="24" ry="29" />
+    <ellipse cx="932" cy="182" rx="13" ry="15" transform="rotate(-15 932 182)" />
+    <ellipse cx="950" cy="174" rx="15" ry="17" />
+    <ellipse cx="968" cy="182" rx="13" ry="15" transform="rotate(15 968 182)" />
+
+    <ellipse cx="1050" cy="190" rx="23" ry="28" />
+    <ellipse cx="1033" cy="163" rx="13" ry="15" transform="rotate(-15 1033 163)" />
+    <ellipse cx="1050" cy="155" rx="15" ry="17" />
+    <ellipse cx="1067" cy="163" rx="13" ry="15" transform="rotate(15 1067 163)" />
+
+    <!-- Top left paw -->
+    <ellipse cx="200" cy="300" rx="25" ry="30" />
+    <ellipse cx="180" cy="265" rx="14" ry="16" transform="rotate(-15 180 265)" />
+    <ellipse cx="200" cy="255" rx="16" ry="18" />
+    <ellipse cx="220" cy="265" rx="14" ry="16" transform="rotate(15 220 265)" />
+
+    <!-- Top right paw -->
+    <ellipse cx="1000" cy="250" rx="25" ry="30" />
+    <ellipse cx="980" cy="215" rx="14" ry="16" transform="rotate(-15 980 215)" />
+    <ellipse cx="1000" cy="205" rx="16" ry="18" />
+    <ellipse cx="1020" cy="215" rx="14" ry="16" transform="rotate(15 1020 215)" />
+
+    <!-- Additional top paws -->
+    <ellipse cx="450" cy="150" rx="22" ry="28" />
+    <ellipse cx="432" cy="120" rx="12" ry="14" transform="rotate(-15 432 120)" />
+    <ellipse cx="450" cy="112" rx="14" ry="16" />
+    <ellipse cx="468" cy="120" rx="12" ry="14" transform="rotate(15 468 120)" />
+
+    <!-- Middle left paw -->
+    <ellipse cx="150" cy="680" rx="22" ry="28" />
+    <ellipse cx="132" cy="650" rx="12" ry="14" transform="rotate(-15 132 650)" />
+    <ellipse cx="150" cy="642" rx="14" ry="16" />
+    <ellipse cx="168" cy="650" rx="12" ry="14" transform="rotate(15 168 650)" />
+
+    <!-- Middle right paw -->
+    <ellipse cx="1050" cy="730" rx="22" ry="28" />
+    <ellipse cx="1032" cy="700" rx="12" ry="14" transform="rotate(-15 1032 700)" />
+    <ellipse cx="1050" cy="692" rx="14" ry="16" />
+    <ellipse cx="1068" cy="700" rx="12" ry="14" transform="rotate(15 1068 700)" />
+
+    <!-- Bottom left paw -->
+    <ellipse cx="250" cy="1260" rx="25" ry="30" />
+    <ellipse cx="230" cy="1225" rx="14" ry="16" transform="rotate(-15 230 1225)" />
+    <ellipse cx="250" cy="1215" rx="16" ry="18" />
+    <ellipse cx="270" cy="1225" rx="14" ry="16" transform="rotate(15 270 1225)" />
+
+    <!-- Bottom right paw -->
+    <ellipse cx="950" cy="1310" rx="25" ry="30" />
+    <ellipse cx="930" cy="1275" rx="14" ry="16" transform="rotate(-15 930 1275)" />
+    <ellipse cx="950" cy="1265" rx="16" ry="18" />
+    <ellipse cx="970" cy="1275" rx="14" ry="16" transform="rotate(15 970 1275)" />
+  </g>
+
+  <!-- Subtle bone shapes -->
+  <g opacity="0.05" fill="#4A5568">
+    <!-- Top row bones -->
+    <rect x="180" y="45" width="65" height="10" rx="5" transform="rotate(10 212 50)" />
+    <circle cx="180" cy="50" r="10" transform="rotate(10 212 50)" />
+    <circle cx="245" cy="50" r="10" transform="rotate(10 212 50)" />
+
+    <rect x="420" y="25" width="70" height="11" rx="5" transform="rotate(-8 455 30)" />
+    <circle cx="420" cy="30" r="11" transform="rotate(-8 455 30)" />
+    <circle cx="490" cy="30" r="11" transform="rotate(-8 455 30)" />
+
+    <rect x="640" y="55" width="68" height="10" rx="5" transform="rotate(15 674 60)" />
+    <circle cx="640" cy="60" r="10" transform="rotate(15 674 60)" />
+    <circle cx="708" cy="60" r="10" transform="rotate(15 674 60)" />
+
+    <rect x="830" y="35" width="72" height="11" rx="5" transform="rotate(-12 866 40)" />
+    <circle cx="830" cy="40" r="11" transform="rotate(-12 866 40)" />
+    <circle cx="902" cy="40" r="11" transform="rotate(-12 866 40)" />
+
+    <rect x="1020" y="50" width="65" height="10" rx="5" transform="rotate(8 1052 55)" />
+    <circle cx="1020" cy="55" r="10" transform="rotate(8 1052 55)" />
+    <circle cx="1085" cy="55" r="10" transform="rotate(8 1052 55)" />
+
+    <!-- Second row bones -->
+    <rect x="280" y="120" width="70" height="11" rx="5" transform="rotate(-5 315 125)" />
+    <circle cx="280" cy="125" r="11" transform="rotate(-5 315 125)" />
+    <circle cx="350" cy="125" r="11" transform="rotate(-5 315 125)" />
+
+    <rect x="520" y="95" width="68" height="10" rx="5" transform="rotate(12 554 100)" />
+    <circle cx="520" cy="100" r="10" transform="rotate(12 554 100)" />
+    <circle cx="588" cy="100" r="10" transform="rotate(12 554 100)" />
+
+    <rect x="720" y="110" width="72" height="11" rx="5" transform="rotate(-10 756 115)" />
+    <circle cx="720" cy="115" r="11" transform="rotate(-10 756 115)" />
+    <circle cx="792" cy="115" r="11" transform="rotate(-10 756 115)" />
+
+    <rect x="900" y="120" width="75" height="12" rx="6" transform="rotate(15 937 126)" />
+    <circle cx="900" cy="126" r="12" transform="rotate(15 937 126)" />
+    <circle cx="975" cy="126" r="12" transform="rotate(15 937 126)" />
+
+    <!-- Third row bones -->
+    <rect x="120" y="150" width="75" height="12" rx="6" transform="rotate(-10 157 156)" />
+    <circle cx="120" cy="156" r="12" transform="rotate(-10 157 156)" />
+    <circle cx="195" cy="156" r="12" transform="rotate(-10 157 156)" />
+
+    <rect x="420" y="175" width="68" height="10" rx="5" transform="rotate(8 454 180)" />
+    <circle cx="420" cy="180" r="10" transform="rotate(8 454 180)" />
+    <circle cx="488" cy="180" r="10" transform="rotate(8 454 180)" />
+
+    <rect x="620" y="165" width="70" height="11" rx="5" transform="rotate(-7 655 170)" />
+    <circle cx="620" cy="170" r="11" transform="rotate(-7 655 170)" />
+    <circle cx="690" cy="170" r="11" transform="rotate(-7 655 170)" />
+
+    <rect x="850" y="180" width="72" height="11" rx="5" transform="rotate(13 886 185)" />
+    <circle cx="850" cy="185" r="11" transform="rotate(13 886 185)" />
+    <circle cx="922" cy="185" r="11" transform="rotate(13 886 185)" />
+
+    <rect x="1060" y="170" width="68" height="10" rx="5" transform="rotate(-9 1094 175)" />
+    <circle cx="1060" cy="175" r="10" transform="rotate(-9 1094 175)" />
+    <circle cx="1128" cy="175" r="10" transform="rotate(-9 1094 175)" />
+
+    <!-- Top center bone -->
+    <rect x="530" y="220" width="80" height="12" rx="6" />
+    <circle cx="530" cy="226" r="12" />
+    <circle cx="610" cy="226" r="12" />
+
+    <!-- Top left bone -->
+    <rect x="350" y="450" width="90" height="14" rx="7" />
+    <circle cx="350" cy="457" r="14" />
+    <circle cx="440" cy="457" r="14" />
+
+    <!-- Top right bone -->
+    <rect x="750" y="400" width="90" height="14" rx="7" transform="rotate(20 795 407)" />
+    <circle cx="750" cy="407" r="14" transform="rotate(20 795 407)" />
+    <circle cx="840" cy="407" r="14" transform="rotate(20 795 407)" />
+
+    <!-- Middle bone -->
+    <rect x="500" y="1070" width="90" height="14" rx="7" />
+    <circle cx="500" cy="1077" r="14" />
+    <circle cx="590" cy="1077" r="14" />
+
+    <!-- Bottom bone -->
+    <rect x="700" y="1400" width="90" height="14" rx="7" transform="rotate(-15 745 1407)" />
+    <circle cx="700" cy="1407" r="14" transform="rotate(-15 745 1407)" />
+    <circle cx="790" cy="1407" r="14" transform="rotate(-15 745 1407)" />
+  </g>
+</svg>

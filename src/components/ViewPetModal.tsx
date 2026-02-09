@@ -1,6 +1,6 @@
 type ViewPetModalProps = {
   isOpen: boolean;
-  onClose?: () => void;
+  onClose: () => void;
   name: string;
   description: string;
   status: string;
@@ -15,17 +15,13 @@ export const ViewPetModal = ({
   status,
   category,
 }: ViewPetModalProps) => {
-  const handleClose = () => {
-    onClose?.();
-  };
-
   return (
     isOpen && (
       <div className="fixed inset-0 bg-gray-600/90 overflow-y-auto h-full w-full flex items-center justify-center">
         <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4 shadow-xl">
           <div className="flex justify-between items-center mb-4 border-b pb-3">
             <h4 className="text-xl font-bold">{name}</h4>
-            <button onClick={handleClose} className="hover:text-gray-700 ">
+            <button onClick={onClose} className="hover:text-gray-700 ">
               <svg
                 width="36px"
                 height="36px"

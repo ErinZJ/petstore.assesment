@@ -17,7 +17,7 @@ export const PetCard = ({
   editClick,
 }: PetProps) => {
   return (
-    <div className="bg-gray-200 p-4 rounded-md">
+    <div className="bg-gray-200/90 p-4 rounded-md">
       <img src="https://via.placeholder.com/150" alt="Pet" />
       <h2 className="text-lg font-bold">{name}</h2>
       <p className="text-gray-600">{description}</p>
