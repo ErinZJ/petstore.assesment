@@ -5,10 +5,10 @@ import animalShelter from "../assets/animalShelter.svg";
 export const Header = () => {
   return (
     <div
-      className="items-center flex flex-col p-4 shadow-2xl"
+      className="items-center flex flex-col py-4 shadow-md fixed w-full top-0 bg-white"
       style={{
-        background:
-          "linear-gradient(0deg,rgba(156, 34, 34, 0.85) 0%, rgba(253, 187, 45, 1) 100%)",
+        backgroundImage:
+          "linear-gradient(0deg,rgba(255, 255, 255, 0.85) 36%, rgba(255, 149, 0, 0.7) 100%)",
       }}
     >
       <div className="flex justify-center">

@@ -1,3 +1,6 @@
+import animalLogo1 from "../../assets/animalLogo1.svg";
+import trash from "../../assets/trash.svg";
+
 type PetProps = {
   id: number;
   name: string;
@@ -17,25 +20,44 @@ export const PetCard = ({
   editClick,
 }: PetProps) => {
   return (
-    <div className="bg-gray-200/90 p-4 rounded-md">
-      <img src="https://via.placeholder.com/150" alt="Pet" />
-      <h2 className="text-lg font-bold">{name}</h2>
-      <p className="text-gray-600">{description}</p>
-      <div>Category: {category}</div>
-      <div>Status: {status}</div>
-      <div className="flex gap-4 mt-2">
-        <button
-          onClick={viewClick}
-          className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
-        >
-          View
-        </button>
-        <button
-          onClick={editClick}
-          className="px-3 py-1 bg-gray-500 text-white rounded hover:bg-gray-600"
-        >
-          Edit
-        </button>
+    <div className="bg-gray-50 rounded-md border shadow-lg h-83 w-85 relative">
+      <div className="flex flex-col gap-2">
+        <div className="flex gap-8 p-4">
+          <img src={animalLogo1} alt="Animal Logo" className="h-35 w-35" />
+        </div>
+        <img
+          src={trash}
+          alt="Trash Icon"
+          className="h-6 w-6 absolute right-2 top-2"
+        />
+        <div className="border border-amber-500/20 mx-4 border-0.5" />
+      </div>
+      <div className="p-4">
+        <div className="flex justify-between items-center">
+          <h4 className="text-lg font-bold">{name}</h4>
+          <div className="border border-green-600 w-20 rounded-md bg-green-300/50 text-green-700 flex justify-center text-sm">
+            {status}
+          </div>
+        </div>
+        <div />
+        <p className="text-gray-800 text-sm">{description}</p>
+        <div className="text-sm font-semibold flex gap-1 mb-2">
+          Category:<p className="font-normal">{category}</p>
+        </div>
+        <div className="flex justify-end gap-2">
+          <button
+            onClick={viewClick}
+            className="py-1 bg-amber-500/90 text-white rounded-xl hover:bg-amber-400 w-18 border border-amber-400"
+          >
+            View
+          </button>
+          <button
+            onClick={editClick}
+            className="py-1 bg-cyan-500/90 text-white  hover:bg-cyan-400 w-18 rounded-xl border border-cyan-400"
+          >
+            Edit
+          </button>
+        </div>
       </div>
     </div>
   );

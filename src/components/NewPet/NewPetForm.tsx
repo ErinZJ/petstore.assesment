@@ -47,13 +47,12 @@ export const NewPetForm = ({ isOpen, onClose }: NewPetFormProps) => {
         </div>
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col p-4 gap-4">
-            <p>
-              <img
-                src={animalLogo1}
-                alt="Animal Logo"
-                className="h-24 w-24 mb-4"
-              />
-            </p>
+            <img
+              src={animalLogo1}
+              alt="Animal Logo"
+              className="h-24 w-24 mb-4"
+            />
+
             <label htmlFor="name" className="flex flex-col gap-2">
               Name
               <input

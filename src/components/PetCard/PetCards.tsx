@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Toggle } from "../Toggle";
 import { ViewPetModal } from "../ViewPetModal";
+import { EditPetModal } from "../EditPetModal";
 import { PetCard } from "./PetCard";
 import { usePetStatus, type PetStatus } from "../../hooks/useGetPetStatus";
 import { NewPet } from "../NewPet/NewPet";
@@ -9,23 +10,31 @@ export const PetCards = () => {
   const [selectedStatus, setSelectedStatus] = useState<PetStatus[]>([
     "available",
   ]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isViewModalOpen, setIsViewModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [selectedPetId, setSelectedPetId] = useState<number | null>(null);
 
   const { data: pets, isLoading, error } = usePetStatus(selectedStatus);
 
   const handleView = (petId: number) => {
     setSelectedPetId(petId);
-    setIsModalOpen(true);
+    setIsViewModalOpen(true);
     console.log("View pet:", petId);
   };
 
   const handleEdit = (petId: number) => {
+    setSelectedPetId(petId);
+    setIsEditModalOpen(true);
     console.log("Edit pet:", petId);
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+  const handleCloseViewModal = () => {
+    setIsViewModalOpen(false);
+    setSelectedPetId(null);
+  };
+
+  const handleCloseEditModal = () => {
+    setIsEditModalOpen(false);
     setSelectedPetId(null);
   };
 
@@ -56,7 +65,7 @@ export const PetCards = () => {
         </div>
       )}
       {!isLoading && !error && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(350px,1fr))] gap-4">
           {pets && pets.length > 0 ? (
             pets.map((pet) => (
               <PetCard
@@ -79,12 +88,20 @@ export const PetCards = () => {
       )}
       {selectedPet && (
         <ViewPetModal
-          onClose={handleCloseModal}
-          isOpen={isModalOpen}
+          onClose={handleCloseViewModal}
+          isOpen={isViewModalOpen}
           name={selectedPet.name}
           description={selectedPet.category?.name || "No description"}
           status={selectedPet.status}
           category={selectedPet.category?.name || "Unknown"}
+        />
+      )}
+      {selectedPet && (
+        <EditPetModal
+          key={selectedPet.id}
+          isOpen={isEditModalOpen}
+          onClose={handleCloseEditModal}
+          pet={selectedPet}
         />
       )}
     </div>

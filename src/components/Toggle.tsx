@@ -13,10 +13,10 @@ export const Toggle = ({ selectedTabs, onTabChange }: ToggleProps) => {
       {tabs.map((tab) => (
         <button
           key={tab}
-          className={`px-4 py-2 rounded border transition-colors ${
+          className={`px-4 py-2 rounded-xl border transition-colors ${
             selectedTabs.includes(tab)
-              ? "bg-blue-500 text-white border-blue-500"
-              : "bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200"
+              ? "bg-amber-500 text-white border-amber-200"
+              : "bg-gray-200 text-gray-600 border-gray-300 hover:bg-amber-50 hover:border-amber-300"
           }`}
           onClick={() => onTabChange?.(tab)}
         >

@@ -1,3 +1,5 @@
+import placeholderImg from "../assets/placeholder.jpg";
+
 type ViewPetModalProps = {
   isOpen: boolean;
   onClose: () => void;
@@ -40,7 +42,7 @@ export const ViewPetModal = ({
             </button>
           </div>
           <img
-            src="https://via.placeholder.com/400x300"
+            src={placeholderImg}
             alt={name}
             className="w-full rounded-lg mb-4"
           />
