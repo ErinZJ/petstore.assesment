@@ -19,7 +19,7 @@ export const ViewPetModal = ({
 }: ViewPetModalProps) => {
   return (
     isOpen && (
-      <div className="fixed inset-0 bg-gray-600/90 overflow-y-auto h-full w-full flex items-center justify-center">
+      <div className="fixed inset-0 bg-gray-600/90 overflow-y-auto h-full w-full flex items-center justify-center z-[9999]">
         <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4 shadow-xl">
           <div className="flex justify-between items-center mb-4 border-b pb-3">
             <h4 className="text-xl font-bold">{name}</h4>

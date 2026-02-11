@@ -1,11 +1,11 @@
 export type NewPetData = {
-  id?: number;
+  id: number;
   category: {
     id: number;
     name: string;
   };
   name: string;
-  photoUrls: string[];
+  photoUrls?: string[];
   tags: {
     id: number;
     name: string;

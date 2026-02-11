@@ -65,7 +65,7 @@ export const PetCards = () => {
         </div>
       )}
       {!isLoading && !error && (
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(350px,1fr))] gap-4">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(350px,1fr))] grid-rows-auto gap-4">
           {pets && pets.length > 0 ? (
             pets.map((pet) => (
               <PetCard
@@ -75,6 +75,7 @@ export const PetCards = () => {
                 description={pet.category?.name || "No description"}
                 status={pet.status}
                 category={pet.category?.name || "Unknown"}
+                tag={pet.tags?.map((tag) => tag.name) || []}
                 viewClick={() => handleView(pet.id)}
                 editClick={() => handleEdit(pet.id)}
               />

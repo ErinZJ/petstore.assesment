@@ -13,6 +13,8 @@ interface PetFormData {
   name: string;
   category: string;
   status: string;
+  tags: string[];
+  photoUrls?: string[];
 }
 
 export const EditPetModal = ({ isOpen, onClose, pet }: EditPetModalProps) => {
@@ -23,19 +25,23 @@ export const EditPetModal = ({ isOpen, onClose, pet }: EditPetModalProps) => {
     name: pet.name || "",
     category: pet.category?.name || "",
     status: pet.status || "available",
+    tags: pet.tags?.map((tag) => tag.name) || [],
+    photoUrls: pet.photoUrls || [],
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const updatedPet = {
-      ...pet,
+      id: pet.id,
       name: formData.name,
       category: {
         id: pet.category?.id || 0,
         name: formData.category,
       },
       status: formData.status,
+      photoUrls: pet.photoUrls || [],
+      tags: pet.tags || [],
     };
 
     try {
@@ -59,78 +65,63 @@ export const EditPetModal = ({ isOpen, onClose, pet }: EditPetModalProps) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-gray-600/90 overflow-y-auto h-full w-full flex items-center justify-center">
-      <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4 shadow-xl">
-        <div className="flex justify-between items-center mb-4 border-b pb-3">
-          <h4 className="text-xl font-bold">Edit Pet: {pet.name}</h4>
-          <button
-            onClick={onClose}
-            className="hover:text-gray-700"
-            disabled={updatePetMutation.isPending}
-          >
-            <svg
-              width="36px"
-              height="36px"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M16 8L8 16M8.00001 8L16 16"
-                stroke="#000000"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
+    <div className="fixed inset-0 bg-gray-600/90 overflow-y-auto h-full w-full flex items-center justify-center z-9999">
+      <div className="bg-white rounded-lg  max-w-md w-full  shadow-xl">
+        <div className="border-b border-amber-200 p-4">
+          <h4 className="text-xl font-bold">{pet.name}</h4>
         </div>
+        <form onSubmit={handleSubmit} className="p-4">
+          <div className="flex flex-col gap-4">
+            <div>
+              <label className="text-gray-900 mb-1">Pet Name</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline focus:outline-amber-500 focus:border-none"
+                required
+              />
+            </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Pet Name
-            </label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
+            <div>
+              <label className="text-gray-900 mb-1">Category</label>
+              <input
+                type="text"
+                name="category"
+                value={formData.category}
+                onChange={handleInputChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline focus:outline-amber-500 focus:border-none"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="tags" className="text-gray-900 mb-1">
+                Tags
+              </label>
+              <input
+                type="text"
+                id="tags"
+                name="tags"
+                value={formData.tags}
+                onChange={handleInputChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline focus:outline-amber-500 focus:border-none"
+              />
+            </div>
+            <div>
+              <label className="text-gray-900 mb-1">Status</label>
+              <select
+                name="status"
+                value={formData.status}
+                onChange={handleInputChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline focus:outline-amber-500 focus:border-none"
+              >
+                <option value="available">Available</option>
+                <option value="pending">Pending</option>
+                <option value="sold">Sold</option>
+              </select>
+            </div>
           </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Category
-            </label>
-            <input
-              type="text"
-              name="category"
-              value={formData.category}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Status
-            </label>
-            <select
-              name="status"
-              value={formData.status}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="available">Available</option>
-              <option value="pending">Pending</option>
-              <option value="sold">Sold</option>
-            </select>
-          </div>
-
           {updatePetMutation.error && (
             <div className="text-red-600 text-sm">
               Error: {updatePetMutation.error.message}
@@ -141,7 +132,7 @@ export const EditPetModal = ({ isOpen, onClose, pet }: EditPetModalProps) => {
             <button
               type="submit"
               disabled={updatePetMutation.isPending}
-              className="flex-1 bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+              className="flex-1 bg-amber-500/90 text-white py-2 px-4 rounded-md hover:bg-amber-400 focus:outline-none"
             >
               {updatePetMutation.isPending ? "Updating..." : "Update Pet"}
             </button>
@@ -149,7 +140,7 @@ export const EditPetModal = ({ isOpen, onClose, pet }: EditPetModalProps) => {
               type="button"
               onClick={onClose}
               disabled={updatePetMutation.isPending}
-              className="flex-1 bg-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 disabled:opacity-50"
+              className="flex-1 bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-400 focus:outline-none "
             >
               Cancel
             </button>

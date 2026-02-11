@@ -14,8 +14,8 @@ function App() {
           backgroundImage: `url(${backgroundSvg})`,
         }}
       >
-        <Header />
         <MainPage />
+        <Header />
       </div>
     </QueryClientProvider>
   );
