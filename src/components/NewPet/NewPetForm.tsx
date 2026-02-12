@@ -151,7 +151,7 @@ export const NewPetForm = ({ isOpen, onClose }: NewPetFormProps) => {
                 disabled={isPending}
                 className="flex-1 bg-amber-500/90 text-white py-2 px-4 rounded-md hover:bg-amber-400 focus:outline-none"
               >
-                {isPending ? "Updating..." : "Update Pet"}
+                {isPending ? "Saving..." : "Save"}
               </button>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import placeholderImg from "../assets/placeholder.jpg";
+import animalLogo1 from "../assets/animalLogo1.svg";
 
 type ViewPetModalProps = {
   isOpen: boolean;
@@ -25,8 +25,10 @@ export const ViewPetModal = ({
         <div className="bg-white rounded-lg max-w-md w-full mx-4 shadow-xl">
           <div className="border-b border-amber-200 p-4">
             <div className="flex justify-between items-center">
-              <h4 className="text-xl font-bold">{name}</h4>
-
+              <div>
+                <h4 className="text-lg font-bold truncate">{name}</h4>
+                <p className="text-gray-600 text-sm mb-3">{description}</p>
+              </div>
               <button
                 onClick={onClose}
                 className="hover:text-gray-700 hover:bg-gray-100 rounded-full"
@@ -51,23 +53,21 @@ export const ViewPetModal = ({
           </div>
           <div className="p-4">
             <img
-              src={placeholderImg}
+              src={animalLogo1}
               alt={name}
-              className="w-full h-64 object-cover rounded-lg mb-4"
+              className="h-40 flex justify-center w-full mb-2"
             />
-            <div className="flex justify-between items-center mb-3">
-              <h4 className="text-lg font-bold truncate pr-4">{name}</h4>
-              <div className="border border-green-600 px-2 py-1 rounded-md bg-green-300/50 text-green-700 text-sm">
+
+            <div className="flex justify-between">
+              <div className="text-sm font-semibold flex gap-1 mb-3">
+                Category:{" "}
+                <span className="font-normal text-gray-600">{category}</span>
+              </div>
+              <div className="border border-green-600 px-2 py-1 rounded-md bg-green-300/50 text-green-700 text-sm w-20 flex justify-center">
                 {status}
               </div>
             </div>
 
-            <p className="text-gray-600 text-sm mb-3">{description}</p>
-
-            <div className="text-sm font-semibold flex gap-1 mb-3">
-              Category:{" "}
-              <span className="font-normal text-gray-600">{category}</span>
-            </div>
             <div className="flex flex-wrap gap-1">
               {tag.map((tagName) => (
                 <div

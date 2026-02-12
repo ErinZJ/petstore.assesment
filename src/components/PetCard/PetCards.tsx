@@ -64,7 +64,7 @@ export const PetCards = () => {
         <div className="text-center text-red-500 py-8">Failed to load pets</div>
       )}
       {!isPending && !error && (
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(350px,1fr))] grid-rows-auto gap-4">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(325px,1fr))] grid-rows-auto gap-4">
           {pets && pets.length > 0 ? (
             pets.map((pet) => (
               <PetCard
