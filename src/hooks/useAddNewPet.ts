@@ -24,8 +24,5 @@ export function useAddNewPet() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["pets"] });
     },
-    onError: (error) => {
-      console.error("Failed to add new pet:", error);
-    },
   });
 }

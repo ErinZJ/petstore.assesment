@@ -7,7 +7,7 @@ type NewPetFormProps = {
 };
 
 export const NewPetForm = ({ isOpen, onClose }: NewPetFormProps) => {
-  const { mutate, isPending } = useAddNewPet();
+  const { mutate, isPending, error } = useAddNewPet();
 
   const [formData, setFormData] = useState({
     id: 0,
@@ -30,7 +30,6 @@ export const NewPetForm = ({ isOpen, onClose }: NewPetFormProps) => {
       photoUrls: formData.photoUrls,
     });
 
-    // Reset form
     setFormData({
       id: formData.id,
       name: "",
@@ -137,7 +136,7 @@ export const NewPetForm = ({ isOpen, onClose }: NewPetFormProps) => {
                 <option value="sold">Sold</option>
               </select>
             </div>
-
+            {error && <p className="text-red-500">Failed to add new pet</p>}
             <div className="flex justify-end gap-3 pt-4">
               <button
                 type="button"

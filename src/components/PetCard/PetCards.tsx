@@ -5,7 +5,6 @@ import { EditPetModal } from "../EditPetModal";
 import { ConfirmDeleteModal } from "../ConfirmDeleteModal";
 import { PetCard } from "./PetCard";
 import { usePetStatus } from "../../hooks/useGetPetStatus";
-import { useDeletePet } from "../../hooks/useDeletePet";
 import { NewPet } from "../NewPet/NewPet";
 import type { PetStatus } from "../../types/petStatus";
 import { Spinner } from "../Spinner";
@@ -14,72 +13,27 @@ export const PetCards = () => {
   const [selectedStatus, setSelectedStatus] = useState<PetStatus[]>([
     "available",
   ]);
-  const [isViewModalOpen, setIsViewModalOpen] = useState(false);
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [modalType, setModalType] = useState<"view" | "edit" | "delete" | null>(
+    null,
+  );
   const [selectedPetId, setSelectedPetId] = useState<number | null>(null);
-  const [deletingPetId, setDeletingPetId] = useState<number | null>(null);
-  const [petToDelete, setPetToDelete] = useState<{
-    id: number;
-    name: string;
-  } | null>(null);
 
   const { data: pets, isPending, error } = usePetStatus(selectedStatus);
-  const deletePetMutation = useDeletePet();
 
   const handleView = (petId: number) => {
     setSelectedPetId(petId);
-    setIsViewModalOpen(true);
+    setModalType("view");
     console.log("View pet:", petId);
   };
 
   const handleEdit = (petId: number) => {
     setSelectedPetId(petId);
-    setIsEditModalOpen(true);
+    setModalType("edit");
     console.log("Edit pet:", petId);
   };
 
-  const handleDelete = (petId: number) => {
-    const pet = pets?.find((p) => p.id === petId);
-    if (pet) {
-      setPetToDelete({ id: petId, name: pet.name });
-      setIsDeleteModalOpen(true);
-    }
-  };
-
-  const confirmDelete = () => {
-    if (petToDelete) {
-      setDeletingPetId(petToDelete.id);
-      deletePetMutation.mutate(petToDelete.id, {
-        onSuccess: () => {
-          setDeletingPetId(null);
-          setIsDeleteModalOpen(false);
-          setPetToDelete(null);
-        },
-        onError: () => {
-          setDeletingPetId(null);
-          setIsDeleteModalOpen(false);
-          setPetToDelete(null);
-        },
-      });
-      console.log("Delete pet:", petToDelete.id);
-    }
-  };
-
-  const closeDeleteModal = () => {
-    if (!deletingPetId) {
-      setIsDeleteModalOpen(false);
-      setPetToDelete(null);
-    }
-  };
-
-  const handleCloseViewModal = () => {
-    setIsViewModalOpen(false);
-    setSelectedPetId(null);
-  };
-
-  const handleCloseEditModal = () => {
-    setIsEditModalOpen(false);
+  const handleCloseModal = () => {
+    setModalType(null);
     setSelectedPetId(null);
   };
 
@@ -89,6 +43,10 @@ export const PetCards = () => {
     } else {
       setSelectedStatus([...selectedStatus, tab]);
     }
+  };
+  const handleDelete = (petId: number) => {
+    setSelectedPetId(petId);
+    setModalType("delete");
   };
 
   const selectedPet = pets?.find((pet) => pet.id === selectedPetId);
@@ -103,9 +61,7 @@ export const PetCards = () => {
       </div>
       {isPending && <Spinner />}
       {error && (
-        <div className="text-center text-red-500 py-8">
-          Error: {error.message}
-        </div>
+        <div className="text-center text-red-500 py-8">Failed to load pets</div>
       )}
       {!isPending && !error && (
         <div className="grid grid-cols-[repeat(auto-fit,minmax(350px,1fr))] grid-rows-auto gap-4">
@@ -119,10 +75,9 @@ export const PetCards = () => {
                 status={pet.status}
                 category={pet.category?.name || "Unknown"}
                 tag={pet.tags?.map((tag) => tag.name) || []}
-                viewClick={() => handleView(pet.id)}
-                editClick={() => handleEdit(pet.id)}
-                deleteClick={() => handleDelete(pet.id)}
-                isDeleting={deletingPetId === pet.id}
+                onViewClick={() => handleView(pet.id)}
+                onEditClick={() => handleEdit(pet.id)}
+                onDeleteClick={() => handleDelete(pet.id)}
               />
             ))
           ) : (
@@ -136,8 +91,8 @@ export const PetCards = () => {
       )}
       {selectedPet && (
         <ViewPetModal
-          onClose={handleCloseViewModal}
-          isOpen={isViewModalOpen}
+          onClose={handleCloseModal}
+          isOpen={modalType === "view"}
           name={selectedPet.name}
           description={selectedPet.category?.name || "No description"}
           status={selectedPet.status}
@@ -148,18 +103,14 @@ export const PetCards = () => {
       {selectedPet && (
         <EditPetModal
           key={selectedPet.id}
-          isOpen={isEditModalOpen}
-          onClose={handleCloseEditModal}
+          isOpen={modalType === "edit"}
+          onClose={handleCloseModal}
           pet={selectedPet}
         />
       )}
-      <ConfirmDeleteModal
-        isOpen={isDeleteModalOpen}
-        onClose={closeDeleteModal}
-        onConfirm={confirmDelete}
-        petName={petToDelete?.name || ""}
-        isDeleting={!!deletingPetId}
-      />
+      {modalType === "delete" && selectedPet && (
+        <ConfirmDeleteModal onClose={handleCloseModal} pet={selectedPet} />
+      )}
     </div>
   );
 };

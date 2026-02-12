@@ -1,19 +1,32 @@
+import { useState } from "react";
+import { useDeletePet } from "../hooks/useDeletePet";
+import type { Pet } from "../types/petStatus";
+
 interface ConfirmDeleteModalProps {
-  isOpen: boolean;
   onClose: () => void;
-  onConfirm: () => void;
-  petName: string;
-  isDeleting?: boolean;
+  pet: Pet;
 }
 
 export const ConfirmDeleteModal = ({
-  isOpen,
   onClose,
-  onConfirm,
-  petName,
-  isDeleting = false,
+  pet,
 }: ConfirmDeleteModalProps) => {
-  if (!isOpen) return null;
+  const deletePetMutation = useDeletePet();
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const handleDelete = () => {
+    setIsDeleting(true);
+    deletePetMutation.mutate(pet.id, {
+      onSuccess: () => {
+        setIsDeleting(false);
+        onClose();
+      },
+      onError: () => {
+        setIsDeleting(false);
+        setError("Failed to delete pet");
+      },
+    });
+  };
 
   return (
     <div className="fixed inset-0 bg-gray-600/90 overflow-y-auto h-full w-full flex items-center justify-center z-[9999]">
@@ -24,12 +37,17 @@ export const ConfirmDeleteModal = ({
           </h3>
           <p className="text-gray-600 text-center mb-6">
             Are you sure you want to delete{" "}
-            <span className="font-semibold text-gray-900">{petName}</span>?
+            <span className="font-semibold text-gray-900">{pet.name}</span>
             <br />
             <span className="text-sm text-red-600">
               This action cannot be undone.
             </span>
           </p>
+          {error && (
+            <p className="text-red-600 text-center mb-6">
+              Failed to delete pet
+            </p>
+          )}
           <div className="flex gap-3">
             <button
               type="button"
@@ -41,7 +59,7 @@ export const ConfirmDeleteModal = ({
             </button>
             <button
               type="button"
-              onClick={onConfirm}
+              onClick={handleDelete}
               disabled={isDeleting}
               className="flex-1 px-4 py-2 text-white bg-red-600 border border-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
             >
