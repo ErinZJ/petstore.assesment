@@ -20,8 +20,5 @@ export function useDeletePet() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["pets"] });
     },
-    onError: (error) => {
-      console.error("❌ Failed to delete pet:", error);
-    },
   });
 }

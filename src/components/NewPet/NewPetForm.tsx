@@ -10,11 +10,10 @@ export const NewPetForm = ({ isOpen, onClose }: NewPetFormProps) => {
   const { mutate, isPending } = useAddNewPet();
 
   const [formData, setFormData] = useState({
-    id: 1,
+    id: 0,
     name: "",
     status: "available" as "available" | "pending" | "sold",
     category: "",
-    tags: "",
     photoUrls: [],
   });
 
@@ -29,15 +28,6 @@ export const NewPetForm = ({ isOpen, onClose }: NewPetFormProps) => {
         name: formData.category,
       },
       photoUrls: formData.photoUrls,
-
-      tags: formData.tags
-        ? [
-            {
-              id: 1,
-              name: formData.tags,
-            },
-          ]
-        : [],
     });
 
     // Reset form
@@ -46,7 +36,6 @@ export const NewPetForm = ({ isOpen, onClose }: NewPetFormProps) => {
       name: "",
       status: "available",
       category: "",
-      tags: "",
       photoUrls: [],
     });
 
@@ -107,23 +96,6 @@ export const NewPetForm = ({ isOpen, onClose }: NewPetFormProps) => {
               />
             </div>
 
-            <div>
-              <label
-                htmlFor="tags"
-                className="block text-sm font-medium text-gray-900 mb-1"
-              >
-                Tags
-              </label>
-              <input
-                type="text"
-                id="tags"
-                name="tags"
-                value={formData.tags}
-                onChange={handleChange}
-                placeholder="e.g. friendly, playful, trained"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
             <div>
               <label
                 htmlFor="photoUrls"

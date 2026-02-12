@@ -6,9 +6,6 @@ export type NewPetData = {
   };
   name: string;
   photoUrls?: string[];
-  tags: {
-    id: number;
-    name: string;
-  }[];
+  
   status: "available" | "pending" | "sold";
 };

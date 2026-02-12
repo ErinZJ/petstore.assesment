@@ -1,5 +1,3 @@
-import React from "react";
-
 interface ConfirmDeleteModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -26,7 +24,7 @@ export const ConfirmDeleteModal = ({
           </h3>
           <p className="text-gray-600 text-center mb-6">
             Are you sure you want to delete{" "}
-            <span className="font-semibold text-gray-900">"{petName}"</span>?
+            <span className="font-semibold text-gray-900">{petName}</span>?
             <br />
             <span className="text-sm text-red-600">
               This action cannot be undone.

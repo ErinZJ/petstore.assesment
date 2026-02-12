@@ -5,16 +5,13 @@ import type { Pet, PetStatus } from "../types/petStatus";
 export function usePetStatus(status: PetStatus[]) {
   return useQuery({
     queryKey: ["pets", status],
-    queryFn: async () => {
-      const allStatuses = status.map(async (state) => findByStatus(state));
-      return Promise.all(allStatuses).then((statuses) => statuses.flat());
-    },
+    queryFn: async () => findByStatus(status),
   });
 }
-async function findByStatus(status: PetStatus) {
+async function findByStatus(status: PetStatus[]) {
   const { data } = await axios.get<Pet[]>(
     `https://petstore.swagger.io/v2/pet/findByStatus`,
-    { params: { status } },
+    { params: { status: status.join(",") } },
   );
   return data;
 }

@@ -1,6 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import type { Pet } from "../types/petStatus";
 import type { NewPetData } from "../types/newPetData";
 
 export function useAddNewPet() {
@@ -8,7 +7,7 @@ export function useAddNewPet() {
 
   return useMutation({
     mutationFn: async (newPet: NewPetData) => {
-      const { data } = await axios.post<Pet>(
+      const { data } = await axios.post<NewPetData>(
         "https://petstore.swagger.io/v2/pet",
         {
           ...newPet,

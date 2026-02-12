@@ -8,6 +8,7 @@ import { usePetStatus } from "../../hooks/useGetPetStatus";
 import { useDeletePet } from "../../hooks/useDeletePet";
 import { NewPet } from "../NewPet/NewPet";
 import type { PetStatus } from "../../types/petStatus";
+import { Spinner } from "../Spinner";
 
 export const PetCards = () => {
   const [selectedStatus, setSelectedStatus] = useState<PetStatus[]>([
@@ -100,9 +101,7 @@ export const PetCards = () => {
           <NewPet />
         </div>
       </div>
-      {isPending && (
-        <div className="text-center text-gray-500 py-8">Loading pets...</div>
-      )}
+      {isPending && <Spinner />}
       {error && (
         <div className="text-center text-red-500 py-8">
           Error: {error.message}
@@ -128,7 +127,9 @@ export const PetCards = () => {
             ))
           ) : (
             <div className="col-span-full text-center text-gray-500 py-8">
-              No pets found with status "{selectedStatus}"
+              {selectedStatus.length > 0
+                ? `No pets found with status "${selectedStatus.join(", ")}"`
+                : "No status selected"}
             </div>
           )}
         </div>
