@@ -1,4 +1,4 @@
-import type { PetStatus } from "../hooks/useGetPetStatus";
+import type { PetStatus } from "../types/petStatus";
 
 type ToggleProps = {
   selectedTabs: PetStatus[];

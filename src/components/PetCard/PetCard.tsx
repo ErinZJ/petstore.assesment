@@ -10,6 +10,8 @@ type PetProps = {
   tag: string[];
   viewClick: () => void;
   editClick: () => void;
+  deleteClick: () => void;
+  isDeleting?: boolean;
 };
 
 export const PetCard = ({
@@ -20,18 +22,29 @@ export const PetCard = ({
   tag,
   viewClick,
   editClick,
+  deleteClick,
+  isDeleting = false,
 }: PetProps) => {
   return (
-    <div className="bg-gray-50 rounded-md border shadow-lg w-85 relative">
+    <div
+      className={`bg-gray-50 rounded-md border shadow-lg w-85 relative ${isDeleting ? "opacity-50 pointer-events-none" : ""}`}
+    >
       <div className="flex flex-col gap-2">
         <div className="flex gap-8 p-4">
           <img src={animalLogo1} alt="Animal Logo" className="h-35 w-35" />
         </div>
-        <img
-          src={trash}
-          alt="Trash Icon"
-          className="h-6 w-6 absolute right-2 top-2"
-        />
+        <button
+          onClick={deleteClick}
+          disabled={isDeleting}
+          className="absolute right-2 top-2 p-1 hover:bg-red-100 rounded-full transition-colors disabled:cursor-not-allowed"
+          title={isDeleting ? "Deleting..." : "Delete pet"}
+        >
+          {isDeleting ? (
+            <div className="h-5 w-5 border-2 border-red-300 border-t-red-600 rounded-full animate-spin"></div>
+          ) : (
+            <img src={trash} alt="Delete pet" className="h-5 w-5" />
+          )}
+        </button>
         <div className="border border-amber-500/20 mx-4 border-0.5" />
       </div>
       <div className="p-4">
@@ -63,13 +76,15 @@ export const PetCard = ({
         <div className="flex justify-end gap-2 align-end">
           <button
             onClick={viewClick}
-            className="py-1 bg-amber-500/90 text-white rounded-xl hover:bg-amber-400 w-18 border border-amber-400"
+            disabled={isDeleting}
+            className="py-1 bg-amber-500/90 text-white rounded-xl hover:bg-amber-400 w-18 border border-amber-400 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             View
           </button>
           <button
             onClick={editClick}
-            className="py-1 bg-cyan-500/90 text-white  hover:bg-cyan-400 w-18 rounded-xl border border-cyan-400"
+            disabled={isDeleting}
+            className="py-1 bg-cyan-500/90 text-white  hover:bg-cyan-400 w-18 rounded-xl border border-cyan-400 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Edit
           </button>

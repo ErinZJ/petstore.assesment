@@ -11,7 +11,6 @@ export function useAddNewPet() {
       const { data } = await axios.post<Pet>(
         "https://petstore.swagger.io/v2/pet",
         {
-          id: 0,
           ...newPet,
         },
         {

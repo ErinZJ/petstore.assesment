@@ -19,22 +19,8 @@ export function useUpdatePet() {
       );
       return data;
     },
-    onSuccess: (updatedPet) => {
-      // Invalidate and refetch pets queries to show the updated pet
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["pets"] });
-
-      // Optionally update specific cache entries
-      queryClient.setQueryData(
-        ["pets", updatedPet.status],
-        (oldData: Pet[] | undefined) => {
-          if (oldData) {
-            return oldData.map((pet) =>
-              pet.id === updatedPet.id ? updatedPet : pet,
-            );
-          }
-          return oldData;
-        },
-      );
     },
     onError: (error) => {
       console.error("Failed to update pet:", error);

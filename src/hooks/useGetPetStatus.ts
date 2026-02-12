@@ -1,8 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import type { Pet } from "../types/petStatus";
-
-export type PetStatus = "available" | "pending" | "sold";
+import type { Pet, PetStatus } from "../types/petStatus";
 
 export function usePetStatus(status: PetStatus[]) {
   return useQuery({

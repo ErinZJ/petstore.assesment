@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useUpdatePet } from "../hooks/useUpdatePet";
-import type { Pet } from "../types/petStatus";
+import type { Pet, PetStatus } from "../types/petStatus";
 
 type EditPetModalProps = {
   isOpen: boolean;
@@ -12,7 +12,7 @@ interface PetFormData {
   id: number;
   name: string;
   category: string;
-  status: string;
+  status: PetStatus;
   tags: string[];
   photoUrls?: string[];
 }
@@ -130,19 +130,19 @@ export const EditPetModal = ({ isOpen, onClose, pet }: EditPetModalProps) => {
 
           <div className="flex gap-3 pt-4">
             <button
+              type="button"
+              onClick={onClose}
+              disabled={updatePetMutation.isPending}
+              className="flex-1 bg-gray-400 text-white py-2 px-4 rounded-md hover:bg-gray-400 focus:outline-none "
+            >
+              Cancel
+            </button>
+            <button
               type="submit"
               disabled={updatePetMutation.isPending}
               className="flex-1 bg-amber-500/90 text-white py-2 px-4 rounded-md hover:bg-amber-400 focus:outline-none"
             >
               {updatePetMutation.isPending ? "Updating..." : "Update Pet"}
-            </button>
-            <button
-              type="button"
-              onClick={onClose}
-              disabled={updatePetMutation.isPending}
-              className="flex-1 bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-400 focus:outline-none "
-            >
-              Cancel
             </button>
           </div>
         </form>

@@ -168,19 +168,19 @@ export const NewPetForm = ({ isOpen, onClose }: NewPetFormProps) => {
 
             <div className="flex justify-end gap-3 pt-4">
               <button
+                type="button"
+                onClick={onClose}
+                disabled={isPending}
+                className="flex-1 bg-gray-400 text-white py-2 px-4 rounded-md hover:bg-gray-400 focus:outline-none "
+              >
+                Cancel
+              </button>
+              <button
                 type="submit"
                 disabled={isPending}
                 className="flex-1 bg-amber-500/90 text-white py-2 px-4 rounded-md hover:bg-amber-400 focus:outline-none"
               >
                 {isPending ? "Updating..." : "Update Pet"}
-              </button>
-              <button
-                type="button"
-                onClick={onClose}
-                disabled={isPending}
-                className="flex-1 bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-400 focus:outline-none "
-              >
-                Cancel
               </button>
             </div>
           </div>
