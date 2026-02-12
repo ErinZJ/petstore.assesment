@@ -19,26 +19,30 @@ export const NewPetForm = ({ isOpen, onClose }: NewPetFormProps) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    mutate({
-      id: formData.id,
-      name: formData.name,
-      status: formData.status,
-      category: {
-        id: 1,
-        name: formData.category,
+    mutate(
+      {
+        id: formData.id,
+        name: formData.name,
+        status: formData.status,
+        category: {
+          id: 1,
+          name: formData.category,
+        },
+        photoUrls: formData.photoUrls,
       },
-      photoUrls: formData.photoUrls,
-    });
-
-    setFormData({
-      id: formData.id,
-      name: "",
-      status: "available",
-      category: "",
-      photoUrls: [],
-    });
-
-    onClose();
+      {
+        onSuccess: () => {
+          setFormData({
+            id: 0,
+            name: "",
+            status: "available",
+            category: "",
+            photoUrls: [],
+          });
+          onClose();
+        },
+      },
+    );
   };
 
   const handleChange = (
@@ -147,6 +151,7 @@ export const NewPetForm = ({ isOpen, onClose }: NewPetFormProps) => {
                 Cancel
               </button>
               <button
+                data-testid="save-button"
                 type="submit"
                 disabled={isPending}
                 className="flex-1 bg-amber-500/90 text-white py-2 px-4 rounded-md hover:bg-amber-400 focus:outline-none"

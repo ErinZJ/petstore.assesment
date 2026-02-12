@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import type { Pet, PetStatus } from "../types/petStatus";
+import { baseUrl } from "./baseUrl";
 
 export function usePetStatus(status: PetStatus[]) {
   return useQuery({
@@ -9,9 +10,8 @@ export function usePetStatus(status: PetStatus[]) {
   });
 }
 async function findByStatus(status: PetStatus[]) {
-  const { data } = await axios.get<Pet[]>(
-    `https://petstore.swagger.io/v2/pet/findByStatus`,
-    { params: { status: status.join(",") } },
-  );
+  const { data } = await axios.get<Pet[]>(`${baseUrl}/pet/findByStatus`, {
+    params: { status: status.join(",") },
+  });
   return data;
 }

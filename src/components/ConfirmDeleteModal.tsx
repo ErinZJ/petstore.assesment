@@ -58,6 +58,7 @@ export const ConfirmDeleteModal = ({
               Cancel
             </button>
             <button
+              data-testid="delete-pet-button"
               type="button"
               onClick={handleDelete}
               disabled={isDeleting}

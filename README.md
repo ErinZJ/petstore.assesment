@@ -24,8 +24,33 @@
 - **Vite** - Fast build tool and development server
 - **TailwindCSS** - Utility-first CSS framework for styling
 - **React Query** - Data fetching and state management library
-- **React Hook Form** - Form handling and validation
 - **Axios** - HTTP client for API requests
+- **Playwright** - End-to-end testing framework
+
+## Testing
+
+### End-to-End Tests with Playwright
+
+The project includes Playwright tests for core CRUD operations:
+
+1. **Install Playwright browsers:**
+   ```bash
+   npx playwright install
+   ```
+
+2. **Run tests:**
+   ```bash
+   npm test                # Run headless
+   npm run test:headed     # Run with browser UI
+   npm run test:ui         # Open Playwright UI
+   ```
+
+### Test Coverage
+- ✅ **Add Pet** - Tests form submission and API success
+- ✅ **Update Pet** - Tests edit modal workflow and API success  
+- ✅ **Delete Pet** - Tests confirmation modal and API success
+
+All tests verify actual API responses (HTTP status codes) rather than DOM changes for more reliable testing.
 
 ## Implementation Details
 

@@ -23,13 +23,11 @@ export const PetCards = () => {
   const handleView = (petId: number) => {
     setSelectedPetId(petId);
     setModalType("view");
-    console.log("View pet:", petId);
   };
 
   const handleEdit = (petId: number) => {
     setSelectedPetId(petId);
     setModalType("edit");
-    console.log("Edit pet:", petId);
   };
 
   const handleCloseModal = () => {

@@ -29,27 +29,26 @@ export const EditPetModal = ({ isOpen, onClose, pet }: EditPetModalProps) => {
     photoUrls: pet.photoUrls || [],
   });
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const updatedPet = {
-      id: pet.id,
-      name: formData.name,
-      category: {
-        id: pet.category?.id || 0,
-        name: formData.category,
+    updatePetMutation.mutate(
+      {
+        id: pet.id,
+        name: formData.name,
+        category: {
+          id: pet.category?.id || 0,
+          name: formData.category,
+        },
+        status: formData.status,
+        photoUrls: pet.photoUrls || [],
+        tags: pet.tags || [],
       },
-      status: formData.status,
-      photoUrls: pet.photoUrls || [],
-      tags: pet.tags || [],
-    };
-
-    try {
-      await updatePetMutation.mutateAsync(updatedPet);
-      onClose();
-    } catch (error) {
-      console.error("Failed to update pet:", error);
-    }
+      {
+        onSuccess: () => {
+          onClose();
+        },
+      },
+    );
   };
 
   const handleInputChange = (
@@ -138,6 +137,7 @@ export const EditPetModal = ({ isOpen, onClose, pet }: EditPetModalProps) => {
               Cancel
             </button>
             <button
+              data-testid="update-pet-button"
               type="submit"
               disabled={updatePetMutation.isPending}
               className="flex-1 bg-amber-500/90 text-white py-2 px-4 rounded-md hover:bg-amber-400 focus:outline-none"
